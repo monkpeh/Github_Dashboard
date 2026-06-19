@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.boot.ApplicationArguments;
 
 @Component
 public class DataSeeder implements ApplicationRunner {
@@ -22,7 +23,7 @@ public class DataSeeder implements ApplicationRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(ApplicationArguments args) throws Exception {
         // Only seed if no repos exist
         if (trackedRepoRepository.count() > 0) {
             logger.info("Database already has repos, skipping seeding");
